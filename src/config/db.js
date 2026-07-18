@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const env = require('./env');
 
+
+
 async function connectDB() {
   try {
+    console.log(`[db] Connecting to MongoDB at ${env.MONGO_URI}...`);
     mongoose.set('strictQuery', true);
     const conn = await mongoose.connect(env.MONGO_URI);
     console.log(`[db] MongoDB connected: ${conn.connection.host}/${conn.connection.name}`);
